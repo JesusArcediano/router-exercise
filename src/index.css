@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+/* ---------------------------------------------------- */
+
+
+body {
+  background-color: #ccc;
+}
+
 .main_nav {
   background-color: black;
   display: flex;
@@ -24,4 +31,30 @@ code {
   text-decoration: none;
   padding: 1rem;
   font-size: 1.5rem;
+}
+
+.form {
+  margin: 10rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: #e3e3e3;
+  width: 18rem;
+  height: 18rem;
+}
+
+.form label {
+  margin-top: 1rem;
+}
+
+.form .signIn_buttons,
+.form .register_buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.form .signIn_buttons button,
+.form .register_buttons button {
+  margin: 1rem;
 }
