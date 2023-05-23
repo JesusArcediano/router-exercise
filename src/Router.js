@@ -1,10 +1,16 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { JournalRoutes } from "./journal/routes/JournalRoutes";
 import { AuthRoutes } from "./auth/routes/AuthRoutes";
+import { useCheckAuth } from "./hooks/useCheckAuth";
+import { CheckingAuth } from "./ui/CheckingAuth";
 
 const Router = () => {
 
-  const status = 'not-authenticated';
+  const {status} = useCheckAuth();
+
+  if (status === 'checking') {
+    return <CheckingAuth />
+  }
 
   return (
     <>

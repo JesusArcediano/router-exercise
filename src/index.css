@@ -40,8 +40,8 @@ body {
   flex-direction: column;
   border: 1px solid black;
   background-color: #e3e3e3;
-  width: 18rem;
-  height: 18rem;
+  width: 20rem;
+  height: 20rem;
 }
 
 .form label {
@@ -57,4 +57,61 @@ body {
 .form .signIn_buttons button,
 .form .register_buttons button {
   margin: 1rem;
+}
+
+.form h5 {
+  margin: 1px;
+}
+
+
+.loader_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Altura igual al 100% del viewport */
+  width: 100%; /* Ancho igual al 100% del viewport */
+  position: fixed; /* Posición fija para mantener el elemento en el centro */
+  top: 0;
+  left: 0;
+  z-index: 999; /* Asegúrate de que el contenedor esté por encima de otros elementos */
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    height: 80px;
+}
+
+.loader div {
+    width: 12px;
+    background: #888;
+    animation: loader 1.8s linear infinite;
+}
+
+.loader div:nth-child(2) {
+    animation-delay: -0.25s;
+}
+
+@keyframes loader {
+    0% {
+        height: 12px;
+    }
+
+    25% {
+        height: 50px;
+    }
+
+    50% {
+        height: 10px;
+    }
+
+    75% {
+        height: 25px;
+    }
+
+    100% {
+        height: 12px;
+    }
 }
