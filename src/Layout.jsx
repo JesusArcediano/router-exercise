@@ -20,7 +20,9 @@ const Layout = () => {
           Logout
         </button>
       </nav>
-      <Outlet />
+      <div className="outlet">
+        <Outlet />
+      </div>
     </>
   );
 };

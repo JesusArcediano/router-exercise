@@ -12,6 +12,7 @@ const Router = () => {
     return <CheckingAuth />
   }
 
+
   return (
     <>
       <BrowserRouter>

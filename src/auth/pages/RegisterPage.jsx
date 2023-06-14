@@ -42,33 +42,34 @@ export const RegisterPage = () => {
     className="form"
     onSubmit={(e) => onSubmit(e)}
     >
-      <label htmlFor="nombre">Nombre completo: </label>
+      <h1>Crear cuenta</h1>
+      <label htmlFor="nombre"></label>
       <input
         type="text"
         id="nombre"
         name="displayName"
         value={displayName}
-        placeholder="Nombre completo"
+        placeholder="Tu nombre completo"
         onChange={onInputChange}
-      />
+        />
       <h5>{(displayNameValid!==null && formSubmitted) ? displayNameValid : ''}</h5>
-      <label htmlFor="correo">Correo: </label>
+      <label htmlFor="correo"></label>
       <input
         type="email"
         id="correo"
         name="email"
         value={email}
-        placeholder="correo@google.com"
+        placeholder="Tu correo"
         onChange={onInputChange}
         />
       <h5>{(emailValid!==null && formSubmitted) ? emailValid : ''}</h5>
-      <label htmlFor="contraseña">Contraseña: </label>
+      <label htmlFor="contraseña"></label>
       <input
         type="password"
         id = 'contraseña'
         name = 'password'
         value={password}
-        placeholder='Contraseña'
+        placeholder='Tu contraseña'
         onChange={onInputChange}  
         />
       <h5>{(passwordValid!==null && formSubmitted) ? passwordValid : ''}</h5>
@@ -80,12 +81,12 @@ export const RegisterPage = () => {
           Crear cuenta
         </button>
       </div>
-      <div>
+      <div className="form__msg">
         <p>
           ¿Ya tienes una cuenta?      
-          <Link to="/auth/login">Ingresar</Link>
+          <Link to="/auth/login" className="form__link">Ingresar</Link>
         </p>
       </div>
-    </form> 
+    </form>
     )
   }

@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
 
-    const formData = {
-      email: 'jesus@google.com',
-      password: '123456'
-    }
+    // const formData = {
+    //   email: 'jesus@google.com',
+    //   password: '123456'
+    // }
 
-    const { email, password, onInputChange } = useForm(formData);
+    const { email, password, onInputChange } = useForm();
     
 
     const {status} = useSelector(state => state.auth)
@@ -36,22 +36,23 @@ export const LoginPage = () => {
     className="form"
     onSubmit={onSubmit}
     >
-      <label htmlFor="correo">Correo: </label>
+      <h1>Iniciar sesión</h1>
+      <label htmlFor="correo"></label>
       <input
         type="email"
         id="correo"
         name="email"
         value={email}
-        placeholder="correo@google.com"
+        placeholder="Tu correo"
         onChange={onInputChange}
       />
-      <label htmlFor="contraseña">Contraseña: </label>
+      <label htmlFor="contraseña"></label>
       <input
         type="password"
         id = "contraseña"
         name = "password"
         value={password}
-        placeholder='Contraseña'
+        placeholder='Tu contraseña'
         onChange={onInputChange}  
       />
       <div className="signIn_buttons">
@@ -69,10 +70,10 @@ export const LoginPage = () => {
           Google
         </button>
       </div>
-      <div>
+      <div className="form__msg">
         <p>
           ¿Todavía no tienes una cuenta? 
-          <Link to="/auth/register">Crear cuenta</Link>
+          <Link to="/auth/register" className="form__link">Crear cuenta</Link>
         </p>
       </div>
     </form>
