@@ -16,22 +16,70 @@ code {
 
 
 body {
-  background-color: rgb(180, 180, 160);
+  /* background-color: rgb(180, 180, 160); */
+  background-color: black;
+  color: white;
 }
 
 .main_nav {
-  background-color: black;
+  background-color: rgb(49, 49, 49);
+  /* background-color: red; */
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
+  align-items: center;
   padding-right: 1rem;
 }
 
-.main_nav a {
+.main_nav a,
+.logout__button {
   color: white;
   text-decoration: none;
   padding: 1rem;
   font-size: 1.5rem;
+  font-weight: bold;
 }
+
+.logout__button {
+  background-color: rgb(255, 0, 0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 0.5rem 0 0.5rem;
+  margin-left: 0.5rem;
+  height: 2rem;
+  color:white;
+}
+
+.logout__button:hover {
+  background-color: rgba(255, 0, 0, 0.858);
+  cursor: pointer;
+}
+
+.logout__icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 4px;
+}
+
+.logout__button p {
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .main_nav a,
+  .logout__button {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .main_nav a,
+  .logout__button {
+    font-size: 12px;
+  }
+}
+
 
 
 
@@ -67,7 +115,6 @@ body {
 .form .register_buttons {
   display: flex;
   justify-content: center;
-  
 }
 
 .form .signIn_buttons button,
@@ -78,6 +125,9 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 5px black;
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form .signIn_buttons button:hover,
@@ -86,13 +136,19 @@ body {
   cursor: pointer;
 }
 
+.form .google__icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
 .form__msg {
   text-align: center;
 }
 
 .form__link {
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: bold;
   padding-left: 4px;
 }
@@ -159,5 +215,206 @@ body {
 }
 
 .outlet {
-  margin: 2rem 5rem;
+  margin: 1rem 0.5rem;
 }
+
+/* //////////////////////// */
+/* //////////////////////// */
+/* //////////////////////// */
+
+
+/* <BANKIST> */
+
+.open__form {
+  /* display: none; */
+}
+
+.form__new {
+  margin-bottom: 10rem;
+  /* padding: 2rem; */
+  display: grid;
+  border: 1px solid black;
+  /* width: 30rem; */
+  min-width: 8rem;
+  max-width: 30rem;
+  height: 15rem;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 5rem;
+}
+
+.form__field {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.form__field__label {
+  margin: 0.8rem auto 0rem auto;
+}
+
+.form__field__select,
+.form__field__input  {
+  text-align: center;
+  padding: 3px;
+}
+
+.form__field__select {
+  appearance: none;
+  font-weight: bold;
+  border-radius: 4px;
+  padding-right: 0.5rem;
+}
+
+.form__field__select option {
+  margin: 0 auto;
+  text-indent: 10px;
+  font-weight: bold;
+}
+
+.form__field__input {
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 500px) {
+  .form__new {
+    margin-bottom: 5rem;
+  }
+  .form__field__label {
+    margin: auto;
+    margin-top: 1rem;
+  }
+} 
+
+.form__button {
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  background-color: rgba(132, 247, 97, 0.847);;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.form__button:hover {
+  background-color: rgba(81, 216, 40, 0.847);
+  cursor: pointer;
+}
+
+
+.movements {
+  display: grid;
+}
+
+@media screen and (max-width: 500px) {
+  .movements {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .movements__menu {
+    font-size: 11px;
+  }
+}
+
+
+.movements__menu {
+  border-radius: 4px 4px 0 0;
+}
+
+.movements__row:last-of-type {
+  border-radius: 0 0 4px 4px;
+}
+
+.movements__row,
+.movements__menu {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid black;
+  padding: 1rem;
+  background-color: rgb(196, 216, 195);
+  color: black;
+}
+
+.movements__row:nth-child(even) {
+  background-color: #bccbde;
+}
+
+.movements__person,
+.movements__description,
+.movements__date,
+.movements__value {
+  justify-self: center;
+  align-self: center;
+}
+
+.movements__value,
+.movements__description {
+  font-weight: bold;
+}
+
+.movements__menu {
+  background-color: rgb(238, 237, 237);
+  color: black;
+  font-weight: bold;
+  height: 0.2rem;
+  padding-top: 0.1rem;
+  padding-bottom: 1.2rem;
+}
+
+.movements__menu__person,
+.movements__menu__description,
+.movements__menu__date,
+.movements__menu__value {
+  font-weight: bold;
+  justify-self: center;
+  align-self: center;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  background: linear-gradient(to right, rgb(88, 86, 88) 73%, rgb(49, 47, 49) 73%);
+  color: white;
+  padding: 0rem 1rem 0.3rem 1rem;
+  box-shadow: 0 0 3px white;
+  border-radius: 4px;
+}
+
+.summary div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.summary p {
+  margin: 0.2rem;
+}
+
+.summary__maths {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 14px;
+}
+
+@media screen and (max-width: 750px) {
+  .summary {
+    font-size: 12px;
+  }
+}
+
+
+
+/* <BANKIST /> */
+
+/* //////////////////////// */
+/* //////////////////////// */
+/* //////////////////////// */
