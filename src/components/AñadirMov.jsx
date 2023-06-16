@@ -1,9 +1,12 @@
 import { useContext, useState } from "react";
 import { ContenidoContext } from "../context/ContenidoContext";
+import { useDispatch } from "react-redux";
+import { setSaving } from "../store/counts/countsSlice";
 
 export const AñadirMov = () => {
 
     const { movements, setMovements } = useContext(ContenidoContext);
+    const dispatch = useDispatch();
    
     let date = new Date();
     let day = date.getDate();
@@ -18,8 +21,10 @@ export const AñadirMov = () => {
         e.preventDefault();
         const selectElement = document.querySelector('#person');
         const personSelected = selectElement.options[selectElement.selectedIndex].textContent;
+        dispatch(setSaving(inputValue.value));
         
         const newMovement = { person: personSelected, description: e.target.description.value, value: e.target.value.value, date: e.target.date.value };
+        
         console.log(newMovement)
         setMovements([...movements, newMovement]);
         console.log(movements)
@@ -34,7 +39,7 @@ export const AñadirMov = () => {
         )
     }
 
-    const formularioHTML = <div className="open__form">
+    const formularioHTML = <div className="form__mov open__form">
       <form className="form__new" onSubmit={handleSubmit}>
         <div className="form__field form__person">
           <label className="form__field__label" htmlFor="person">PAGADORA</label>
