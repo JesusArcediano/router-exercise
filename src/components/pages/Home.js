@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuMov } from "../MenuMov";
 import { useDispatch, useSelector } from "react-redux";
 import { startNewMovement } from "../../store/counts/thunks";
-import { setSaving } from "../../store/counts/countsSlice";
 
 
 export const Home = () => {
   
+  const [gastosJesus, setGastosJesus] = useState(0);
+  const [gastosLeila, setGastosLeila] = useState(0);
+
   const dispatch = useDispatch();
   const { movements } = useSelector(state => state.counts);
   
@@ -82,6 +84,56 @@ export const Home = () => {
         </div>
       ))
     );
+
+    // const summary = movements.reduce((acc, mov) => {}, 0);
+
+    useEffect(() => {
+      movements.forEach((mov) => {
+        if (mov.person === 'Jesús') {
+          const value = parseFloat(mov.value);
+          const total = parseFloat(0);
+          const totalJesus = total + value;
+          setGastosJesus(totalJesus);
+        }
+        else {
+          const value = parseFloat(mov.value);
+          const total = parseFloat(0);
+          const totalLeila = total + value;
+          setGastosLeila(totalLeila);
+        }
+      })
+    }, [movements])
+    
+
+
+    // movements.forEach((mov) => {
+    //   if (mov.person === 'Jesus') {
+    //     const value = parseFloat(mov.value);
+    //     const total = parseFloat(0);
+    //     const totalJesus = total + value;
+    //     console.log(totalJesus);
+    //   }
+    // });
+
+
+    const summary = <div className="summary">
+    <div className="summary__general">
+      <p className="summary__general__label">Gastos<br />totales</p>
+      <p className="summary__general__value">81.52€</p>
+    </div>
+    <div className="summary--leila">
+      <p className="summary__label--leila">Pagado por Leila</p>
+      <p className="summary__value--leila">{gastosLeila} €</p>
+    </div>
+    <div className="summary--jesus">
+      <p className="summary__label--jesus">Pagado por Jesús</p>
+      <p className="summary__value--jesus">{gastosJesus} €</p>
+    </div>
+    <div className="summary__maths">
+      <p className="summary__label--jesus">Leila debe<br />a Jesús</p>
+      <p className="summary__value--jesus">10€</p>
+    </div>
+  </div>
   
 
 
@@ -94,11 +146,10 @@ export const Home = () => {
       >
         Añadir gasto
       </button>
-      <div>
         {formularioHTML}
-      </div>
       <MenuMov  />
       {newContent}
+      {summary}
     </>
   )
 }

@@ -325,11 +325,15 @@ body {
 
 .movements {
   display: grid;
+  align-items: center;
 }
 
 @media screen and (max-width: 500px) {
   .movements {
     font-size: 12px;
+  }
+  .movements__date {
+    font-size: 11px;
   }
 }
 @media screen and (max-width: 380px) {
@@ -341,6 +345,7 @@ body {
 
 .movements__menu {
   border-radius: 4px 4px 0 0;
+  margin: 0 0;
 }
 
 .movements__row:last-of-type {
@@ -352,9 +357,11 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-bottom: 1px solid black;
-  padding: 1rem;
+  padding: 1rem 0;
   background-color: rgb(196, 216, 195);
   color: black;
+  justify-items: center;
+  align-items: center;
 }
 
 .movements__row:nth-child(even) {
@@ -366,7 +373,6 @@ body {
 .movements__date,
 .movements__value {
   justify-self: center;
-  align-self: center;
 }
 
 .movements__value,
@@ -389,7 +395,6 @@ body {
 .movements__menu__value {
   font-weight: bold;
   justify-self: center;
-  align-self: center;
 }
 
 .summary {
