@@ -1,31 +1,22 @@
-import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
+import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
-import { addEmptyNote, savingNewNote, setSaving, updateNote, deleteNoteById } from "./journalSlice";
+import { addEmptyNote, savingNewNote, setNotes } from "./countsSlice";
 import { loadNotes } from "../../helpers/loadNotes";
-import { setNotes } from "./journalSlice";
 
 
-export const startNewMovement = () => {
+export const startNewMovement = (newMovement) => {
     return async(dispatch, getState) => {
 
         const { uid } = getState().auth;
         console.log(uid)
-
-        const newMovement = {
-            pagadora: '',
-            descripcion: '',
-            fecha: '',
-            cantidad: ''
-        }
-        
+         
         const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`));
         await setDoc(newDoc, newMovement);
         
         newMovement.id = newDoc.id;
             
-        //dispatch
-            dispatch(savingNewNote());
-            dispatch(addEmptyNote(newMovement));
+        dispatch(savingNewNote());
+        dispatch(addEmptyNote(newMovement));
     }
 }
 
@@ -41,38 +32,38 @@ export const startLoadingNotes = () => {
 }
 
 
-export const startSaveNote = () => {
-    return async(dispatch, getState) => {
+// export const startSaveNote = () => {
+//     return async(dispatch, getState) => {
 
-        dispatch(setSaving());
+//         dispatch(setSaving());
 
-        const { uid } = getState().auth;
-        const {active:note} = getState().counts;
+//         const { uid } = getState().auth;
+//         const {active:note} = getState().counts;
 
         
-        const noteToFirestore = {...note};
-        delete noteToFirestore.id;
+//         const noteToFirestore = {...note};
+//         delete noteToFirestore.id;
         
-        const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
-        await setDoc(docRef, noteToFirestore, { merge: true });
+//         const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
+//         await setDoc(docRef, noteToFirestore, { merge: true });
         
-        dispatch(updateNote(note));
-    }
-}
+//         dispatch(updateNote(note));
+//     }
+// }
 
 
-export const startDeletingNote = () => {
-    return async(dispatch, getState) => {
+// export const startDeletingNote = () => {
+//     return async(dispatch, getState) => {
     
-            const { uid } = getState().auth;
-            const {active:note} = getState().counts;
+//             const { uid } = getState().auth;
+//             const {active:note} = getState().counts;
 
-            console.log({uid, note})
+//             console.log({uid, note})
 
-            const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
+//             const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
 
-            await deleteDoc(docRef);
+//             await deleteDoc(docRef);
 
-            dispatch(deleteNoteById(note.id));
-    }
-}
+//             dispatch(deleteNoteById(note.id));
+//     }
+// }
